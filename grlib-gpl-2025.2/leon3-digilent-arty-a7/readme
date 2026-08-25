@@ -1,0 +1,20 @@
+clk_pll_i boards xdc
+
+laur@laurPC-100:leon3-digilent-arty-a7$ diff ../../boards/digilent-arty-a7/mig-XC7A100T/mig-XC7A100T.xci /home/laur/downloads/leon3/boards/digilent-arty-a7/mig-XC7A100T/mig-XC7A100T.xci
+7c7
+<     "gen_directory": "../../../../leon3-digilent-arty-a7.gen/sources_1/ip/mig",
+---
+>     "gen_directory": "../../../../m.gen/sources_1/ip/mig",
+1182c1182
+<         "OUTPUTDIR": [ { "value": "../../../../leon3-digilent-arty-a7.gen/sources_1/ip/mig" } ],
+---
+>         "OUTPUTDIR": [ { "value": "../../../../m.gen/sources_1/ip/mig" } ],
+1571c1571
+< }
+---
+> }
+
+make vivado
+cp ../../boards/digilent-arty-a7/mig-XC7A100T/mig-XC7A100T.xci vivado/mig.xci
+
+
