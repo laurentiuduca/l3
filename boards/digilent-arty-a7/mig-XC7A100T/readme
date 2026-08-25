@@ -1,4 +1,0 @@
-in xci
-"gen_directory": "../../../../leon3-digilent-arty-a7.gen/sources_1/ip/mig",
-"OUTPUTDIR": [ { "value": "../../../../leon3-digilent-arty-a7.gen/sources_1/ip/mig" } ],
-- requests mig_a.prj
