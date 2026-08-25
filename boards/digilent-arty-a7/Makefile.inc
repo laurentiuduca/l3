@@ -1,0 +1,15 @@
+TECHNOLOGY=Artix7
+ISETECH="Artix7"
+
+PACKAGE=FGG676
+PART=XC7A100T
+SPEED=-2
+SYNFREQ=50
+PROMGENPAR= -c FF -s 8192 -u 0 $(TOP).bit -p mcs -spi -w -o digilent-arty-a7-xc7a100t
+#digilent-nexys-video-xc7a200t
+
+MANUFACTURER=Xilinx
+
+MGCTECHNOLOGY=ARTIX-7
+MGCPACKAGE=$(PACKAGE)
+

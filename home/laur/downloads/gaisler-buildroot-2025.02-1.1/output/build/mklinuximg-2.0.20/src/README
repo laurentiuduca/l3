@@ -1,0 +1,77 @@
+MKLINUXIMG LEON Linux RAM Loader
+================================
+
+Supports Linux Kernels: 2.6.36 and later
+Supports LEON SPARCv7 and SPARCv8 with/out hardware FPU
+
+
+Files
+-----
+VA = Virtual Addresses
+PA = Physical Addresses
+
+head.S            - Entry point from bootloader (PA)
+boot*.c           - Setup MMU, CPU and START/PROM environment (PA)
+startup*.c        - Start up code run once by boot CPU (VA)
+prom*.c           - The OpenBoot PROM called from Linux, resident (VA)
+
+
+The loader is split up into several stages and parts:
+ * BOOT
+ * STARTUP
+ * KERNEL
+ * PROM
+
+
+BOOT
+====
+ FILES: head.S + boot*.c
+ PHYSICAL ADDRESSES
+ MEMORY LAYOUT: mklinuximg_boot.lds.S
+
+ Setup CPU, C-environment (stack), Early Linux boot MMU Tables used by STARTUP
+ and PROM, initialize STARTUP and PROM TEXT/DATA/BSS/STACK/HEAP.
+
+ Slave CPUs also run the code CPU/MMU initialization code prior to jumping to
+ the kernel.
+
+STARTUP
+=======
+ FILES: startup*.c
+ VIRTUAL ADDRESSES
+ MEMORY LAYOUT: mklinuximg_virt.lds.S
+
+ Only boot CPU, run once. Start up initialization of PROM. For example scan
+ AMBA Plug & Play to find Timer/UART/IRQCTRL and create AMBA PROM nodes for
+ Linux.
+
+ Once Linux has booted the STARTUP section is overwritten and should not be
+ accessed from the PROM area, or from the BOOT area by slave CPUs.
+
+
+KERNEL
+======
+ FILES: input kernel, from linux/arch/sparc/boot/image
+ VIRTUAL ADDRESSES.
+
+ During boot Linux use the early MMU Tables as boot.c has generated and
+ activated, after early Linux initialization the MMU table is substituted with
+ Linux's custom MMU Table and by probing the MMU table in
+ srmmu_inherit_prom_mappings() in the region 0xfe400000-0xffefffff the PROM
+ region 0xffd00000 page table setup is copied to Linux own MMU Table. After
+ Linux has actived its own tables the PROM section is still accessible.
+
+
+PROM
+====
+ FILES: prom*.c
+ VIRTUAL ADDRESSES
+ MEMORY LAYOUT: mklinuximg_virt.lds.S
+
+ Provides information about the system and basic operations to the Linux kernel
+ using the OpenBoot PROM interface. Linux reads the 'romvector' structure to
+ find all information required.
+
+ Before Linux is booted (before opprom_init() returns) the STARTUP area is
+ accessible. However after Linux boots the STARTUP section is overwritten by
+ Linux and hence not accessible.

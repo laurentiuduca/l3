@@ -1,0 +1,53 @@
+bdinit.S
+--------
+
+AHBRAM
+------
+
+MKPROM2 can not detect and initialize GR712RC AHBRAM. Use this bdinit0 to
+enable AHBRAM EDAC and clear the full 192 KiB AHBRAM.
+
+
+Improve SDRAM timing
+--------------------
+
+This example configures a scheme where the GR712RC controller operate
+with CAS latency 3, while the SDRAM operates at CAS=2. This will
+effectively give one 'waitstate', and may improve timing budgets on
+SDCLK. A dedicated SDCLK timing analysis should be conducted as usual
+even when using this scheme.
+
+It is possible to achieve this by first initializing the FTMCTRL memory
+controller with CAS 2 and programming the SDRAM accordingly (issue
+LOAD-COMMAND-REGISTER) with the MCFG2.TCAS=0 setting. Then change
+the MCFG2.TCAS to 1 without issuing LOAD-COMMAND-REGISTER. This way,
+the controller will use CAS 3 and the DRAM module(s) will use CAS 2.
+
+The function is implemented in bdinit1 (bdinit.S) which is executed
+by the MKPROM2 boot loader after the memory controller has been
+initialized, but before RAM is accessed for the first time.
+
+
+Summary
+-------
+
+The following steps are performed at run time when the MKPROM2 boot
+loder executes. Only steps related to bdinit.S in this directory
+are covered.
+
+1. Call bdinit0, which init and clear AHBRAM if bdinit0 is used
+2. Initialize FTMCTRL and other peripherals according to MKPROM2 options
+3. Call bdinit1, which sets MCFG2.TCAS=1
+4. Initialize RAM
+5. Call bdinit2
+6. Call MKPROM2 main() function (not application main, unless -romres)
+7. Uncompress application from ROM to RAM
+8. Jump to application entry point
+
+Usage
+-----
+
+The routines can be used with MKPROM2 like this:
+  $ sparc-gaisler-elf-as bdinit.S -o bdinit.o
+  $ mkprom2 -freq 80 -bdinit main.elf -o prom.elf
+

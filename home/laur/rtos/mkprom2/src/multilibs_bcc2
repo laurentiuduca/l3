@@ -1,0 +1,5 @@
+ut699;@mcpu=v7@mfix-ut699
+ut699_soft;@mcpu=v7@mfix-ut699@msoft-float
+ut699_flat;@mcpu=v7@mfix-ut699@mflat
+ut699_soft_flat;@mcpu=v7@mfix-ut699@msoft-float@mflat
+
