@@ -13,7 +13,7 @@ set -x
         rm -rf webtalk* xelab*.* top_sim.wdb project.prj run.tcl *.vcd vivado* *bit capture* *out .Xil *dcp *rpt proj.*
         rm -rf example_soc/libfpga/sdsd_spi.o example_soc/libfpga/sdwork-obj93.cf tight_setup_hold_pins.txt
         rm -rf usage_statistics_webtalk* clockInfo.txt *wdb *log xvhdl.pb 
-        rm -f ram.srec dump.s xdump.s sparc.bin /home/laur/rtos/mkprom2/src/mkprom2
+        rm -f ram.srec dump.s xdump.s sparc.bin ../../../mkprom2/src/mkprom2
         make clean
 
 

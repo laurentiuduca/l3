@@ -1,7 +1,7 @@
 set -x
 set -e
 
-cd /home/laur/rtos/mkprom2/src
+cd ../../../mkprom2/src
 make
 cd -
 #make soft
