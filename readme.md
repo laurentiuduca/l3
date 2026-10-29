@@ -20,12 +20,30 @@ tar -xf gaisler-buildroot-2025.02-1.1.tar.bz2
 cp buildroot/gaisler-buildroot-2025.02-1.1 . -r
 
 ### Build
+#### buildroot
 cd gaisler-buildroot-2025.02-1.1
 make
+After error
+cp ../buildroot/gaisler-buildroot-2025.02-1.1/output/build/linux-6.13.12/.config output/build/linux-6.13.12/
+make
 cd -
+#### grlib
 Replace in bin/Makefile paths that start with '/home/laur/' with your paths
 or ignore if you do not want to use ghdl or xsim
 cd grlib-gpl-2026.3-b4301/designs/
 ./run-sparc.sh
 
+### Simulate
+Install nvc simulator
+Every time you modify a vhd or verilog source
+make nvc
+make nvc-run
 
+### Generate bit file
+make vivado
+
+## Compile gcc
+
+## Build mig file
+
+ 
