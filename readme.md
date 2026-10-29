@@ -6,6 +6,8 @@
 * nvc vhdl and verilog mixed simulation 
 
 #### Quick start
+##### Simulation
+tar -xf grlib-gpl-2026.3-b4301.tar.gz
 
 
 <!-- cat sparc-v8-linux6.13.tar.xz | split -b 40m - sparc-v8-linux6.13.tar.xz. -->
