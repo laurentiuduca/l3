@@ -75,7 +75,7 @@ export PATH="$PATH:/home/laur/rtos/sparc-v8/sparc-v8-linux6.13/bin"
 export TOOLS=/home/laur/rtos/sparc-v8/sparc-v8-linux6.13
 ```
 
-2.2 Build binutils
+### 2.2 Build binutils
 download from http://www.gnu.org/software/binutils
 ```
 mkdir bbinutils
@@ -85,7 +85,7 @@ make
 make install
 cd -
 ```
-2.3 Build linux headers
+### 2.3 Build linux headers
 download from kernel.org
 ```
 cd linux-6.13.12
@@ -93,7 +93,7 @@ make mrproper
 make ARCH=sparc INSTALL_HDR_PATH=${TOOLS} headers_install
 cd -
 ```
-2.4 gcc pass 1 - without libc
+### 2.4 gcc pass 1 - without libc
 download from gcc.gnu.org
 ```
 cd ../gcc-14.4.0/
@@ -105,7 +105,7 @@ make all-gcc all-target-libgcc
 make install-gcc install-target-libgcc
 ```
 
-2.5 Configure and build uclibc
+### 2.5 Configure and build uclibc
 download from uclibc.org
 ```
 tar xjvf uClibc-1.0.58.tar.bz2
@@ -150,7 +150,7 @@ make
 make PREFIX=${TOOLS} install
 ```
 
-2.6 gcc pass 2
+### 2.6 gcc pass 2
 ```
 mkdir ../sparc-v8-linux6.13/usr
 cp ../sparc-v8-linux6.13/include ../sparc-v8-linux6.13/usr -r
