@@ -66,5 +66,9 @@ dd if=sparc.bin of=/dev/sdb bs=512 seek=0 && sync
 ## 2. Compile gcc
 
 ## 3. Build mig file
-
+We have already built the mig file; the step-by-step tutorial is in the migpng folder.
+We included mig.dcp in the build in order to save time,
+but if you want to rebuild it from scratch when building the bit file,
+please modify grlib/grlib-gpl-2026.3-b4301/designs/leon3-digilent-arty-a7/xilinx_ips/mig.tcl
+with mig.tclo
  
