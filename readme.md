@@ -110,9 +110,41 @@ download from uclibc.org
 ```
 tar xjvf uClibc-1.0.58.tar.bz2
 cd uClibc-1.0.58
-make menuconfig
+cp ../uclibc-ng-1.0.58.config .config
 ```
-
+Some necessary menuconfig options
+```
+make menuconfig
+Target Architecture: sparc
+Target Options:
+  Processor type: SPARC v8
+  Target has MMU: yes
+  Utilize MMU: yes
+  Enable floating point: yes
+  Target has FPU: no
+  Enable C99 math: yes
+  Symbol: UCLIBC_HAS_FENV [=n] 
+     [ ] Enable C99 Floating-point environment 
+  KERNEL_HEADERS: /home/laur/rtos/sparc-v8/sparc-v8-linux6.13/include
+General Library Settings:
+  Thread support (Native POSIX Threading (NPTL))
+  SUSv3 legacy functions: yes
+  SUSv3 legacy macros: yes
+  SUSv4 legacy functions: yes
+Networking:
+  IPv6: yes
+  RPC support: yes
+  Full RPC: no
+  DNS resolver functions: yes
+String support:
+  ctype argument checking: detect and handle
+Installation options:
+  RUNTIME_PREFIX: /
+  DEVEL_PREFIX: /
+  HARDWIRED_ABSPATH: no
+Development and debugging options
+  CROSS_COMPILER_PREFIX: sparc-leon3-linux-
+```
 ```
 make
 make PREFIX=${TOOLS} install
