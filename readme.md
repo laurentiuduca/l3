@@ -1,9 +1,11 @@
-# l3soc
+## l3soc
 * 10klut
-* sparcv8
+* sparcv8, grlib, no grmon
+* microsd, fast ethernet
 * linux 6.13, gaisler-buildroot-2025.02-1.1
 * gcc-14.4.0 binutils-2.46.1 uClibc-ng-1.0.58
 * nvc vhdl and verilog mixed simulation 
+* qmtech wukong v3 fpga board
 
 ## Quick start
 
@@ -41,6 +43,8 @@ make nvc-run
 
 ### Generate bit file
 make vivado
+#### write microsd (replace /dev/sdb with your microsd)
+dd if=sparc.bin of=/dev/sdb bs=512 seek=0 && sync
 
 ## Compile gcc
 
