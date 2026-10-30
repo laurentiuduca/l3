@@ -8,6 +8,7 @@
 * qmtech wukong v3 fpga board
 
 ## 1. Quick start
+The wukong board has the same ddr3 memory as digilent arty.
 
 ### 1.1 Workspace
 #### grlib
