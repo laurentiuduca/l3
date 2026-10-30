@@ -9,6 +9,7 @@
 
 ## 1. Quick start
 The wukong board has the same ddr3 memory as digilent arty.
+That's why we modified the arty's folders in grlib.
 
 ### 1.1 Workspace
 #### grlib
