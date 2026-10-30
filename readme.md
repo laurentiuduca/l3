@@ -36,7 +36,7 @@ make -j5
 After linux kernel error
 ```
 cp ../buildroot/gaisler-buildroot-2025.02-1.1/output/build/linux-6.13.12/.config output/build/linux-6.13.12/
-make
+make -j5
 cd -
 ```
 #### grlib
