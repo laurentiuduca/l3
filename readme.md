@@ -150,6 +150,24 @@ make
 make PREFIX=${TOOLS} install
 ```
 
+2.6 gcc pass 2
+```
+mkdir ../sparc-v8-linux6.13/usr
+cp ../sparc-v8-linux6.13/include ../sparc-v8-linux6.13/usr -r
+../gcc-14.4.0/configure --prefix=${TOOLS} --target=sparc-leon3-linux-uclibc --with-sysroot=${TOOLS} --with-build-sysroot=${TOOLS} --with-cpu=v8 --with-float=soft --with-gnu-as --with-gnu-ld --disable-nls --disable-multilib --enable-languages=c,c++ --enable-shared --enable-threads=posix --disable-libsanitizer --disable-libgomp --disable-libquadmath --disable-libssp --disable-libvtv --disable-libitm --disable-libmudflap --with-default-libc=uclibc
+make -j4
+make install-strip
+```
+
+2.7 test
+cd /tmp
+echo 'int main(){}' > t.c
+sparc-leon3-linux-gcc t.c -o t
+readelf -l t | grep interpreter
+[Requesting program interpreter: /lib/ld-uClibc.so.
+
+
+
 ## 3. Build mig file
 We have already built the mig file; the step-by-step tutorial is in the migpng folder.
 We included mig.dcp in the build in order to save time,
