@@ -160,10 +160,12 @@ make install-strip
 ```
 
 2.7 test
+```
 cd /tmp
 echo 'int main(){}' > t.c
 sparc-leon3-linux-gcc t.c -o t
 readelf -l t | grep interpreter
+```
 [Requesting program interpreter: /lib/ld-uClibc.so.
 
 
