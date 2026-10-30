@@ -7,9 +7,9 @@
 * nvc vhdl and verilog mixed simulation 
 * qmtech wukong v3 fpga board
 
-## Quick start
+## 1. Quick start
 
-### Workspace
+### 1.1 Workspace
 #### grlib
 tar -xf grlib-gpl-2026.3-b4301.tar.gz
 cp grlib/grlib-gpl-2026.3-b4301 . -r
@@ -21,7 +21,7 @@ Add the full path to sparc-v8-linux6.13/bin to the PATH variable
 tar -xf gaisler-buildroot-2025.02-1.1.tar.bz2
 cp buildroot/gaisler-buildroot-2025.02-1.1 . -r
 
-### Build
+### 1.2. Build
 #### buildroot
 cd gaisler-buildroot-2025.02-1.1
 make
@@ -35,19 +35,19 @@ or ignore if you do not want to use ghdl or xsim
 cd grlib-gpl-2026.3-b4301/designs/
 ./run-sparc.sh
 
-### Simulate
+### 1.3 Simulate
 Install nvc simulator
 Every time you modify a vhd or verilog source
 make nvc
 make nvc-run
 
-### Generate bit file
+### 1.4 Generate bit file
 make vivado
 #### write microsd (replace /dev/sdb with your microsd)
 dd if=sparc.bin of=/dev/sdb bs=512 seek=0 && sync
 
-## Compile gcc
+## 2. Compile gcc
 
-## Build mig file
+## 3. Build mig file
 
  
