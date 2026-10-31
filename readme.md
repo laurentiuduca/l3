@@ -171,7 +171,13 @@ Requesting program interpreter: /lib/ld-uClibc.so.
 
 
 ## 3. Build mig file
-3.1 We have already built the mig file; the step-by-step tutorial is in the migpng folder.
+3.1 We included mig.dcp in the build in order to save time,
+but if you want to rebuild it from scratch when building the bit file,
+please modify grlib/grlib-gpl-2026.3-b4301/designs/leon3-digilent-arty-a7/xilinx_ips/mig.tcl
+with mig.tclo
+
+3.2 If you want to build the mig file from vivado ip core generator
+the step-by-step tutorial is in the migpng folder.
 There are some changes that need to be manually made
 ```
 diff /home/laur/lucru/cn/riscv/m/m.srcs/sources_1/ip/mig/mig.xci ../../boards/digilent-arty-a7/mig-XC7A100T/mig-XC7A100T.xci
@@ -184,8 +190,4 @@ diff /home/laur/lucru/cn/riscv/m/m.srcs/sources_1/ip/mig/mig.xci ../../boards/di
 ---
 >         "OUTPUTDIR": [ { "value": "../../../../leon3-digilent-arty-a7.gen/sources_1/ip/mig" } ],
 ```
-3.2 We included mig.dcp in the build in order to save time,
-but if you want to rebuild it from scratch when building the bit file,
-please modify grlib/grlib-gpl-2026.3-b4301/designs/leon3-digilent-arty-a7/xilinx_ips/mig.tcl
-with mig.tclo
  
