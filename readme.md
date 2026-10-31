@@ -94,7 +94,7 @@ make ARCH=sparc INSTALL_HDR_PATH=${TOOLS} headers_install
 cd -
 ```
 ###### 2.4 gcc pass 1 - without libc
-download from gcc.gnu.org
+download from http://gcc.gnu.org
 ```
 cd gcc-14.4.0/
 ./contrib/download_prerequisites
@@ -106,7 +106,7 @@ make install-gcc install-target-libgcc
 ```
 
 ###### 2.5 Configure and build uclibc
-download from uclibc.org
+download from http://uclibc.org
 ```
 tar xjvf uClibc-1.0.58.tar.bz2
 cd uClibc-1.0.58
