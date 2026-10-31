@@ -171,8 +171,20 @@ Requesting program interpreter: /lib/ld-uClibc.so.
 
 
 ## 3. Build mig file
-We have already built the mig file; the step-by-step tutorial is in the migpng folder.
-We included mig.dcp in the build in order to save time,
+3.1 We have already built the mig file; the step-by-step tutorial is in the migpng folder.
+There are some changes that need to be manually made
+```
+diff /home/laur/lucru/cn/riscv/m/m.srcs/sources_1/ip/mig/mig.xci ../../boards/digilent-arty-a7/mig-XC7A100T/mig-XC7A100T.xci
+7c7
+<     "gen_directory": "../../../../m.gen/sources_1/ip/mig",
+---
+>     "gen_directory": "../../../../leon3-digilent-arty-a7.gen/sources_1/ip/mig",
+1182c1182
+<         "OUTPUTDIR": [ { "value": "../../../../m.gen/sources_1/ip/mig" } ],
+---
+>         "OUTPUTDIR": [ { "value": "../../../../leon3-digilent-arty-a7.gen/sources_1/ip/mig" } ],
+```
+3.2 We included mig.dcp in the build in order to save time,
 but if you want to rebuild it from scratch when building the bit file,
 please modify grlib/grlib-gpl-2026.3-b4301/designs/leon3-digilent-arty-a7/xilinx_ips/mig.tcl
 with mig.tclo
