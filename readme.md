@@ -163,10 +163,10 @@ make install-strip
 ```
 cd /tmp
 echo 'int main(){}' > t.c
-sparc-leon3-linux-gcc-uclibc t.c -o t
+sparc-leon3-linux-uclibc-gcc t.c -o t
 readelf -l t | grep interpreter
 ```
-[Requesting program interpreter: /lib/ld-uClibc.so.
+Requesting program interpreter: /lib/ld-uClibc.so.
 
 
 
