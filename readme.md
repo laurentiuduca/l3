@@ -1,4 +1,4 @@
-#### l3soc
+## l3soc
 * 10klut
 * sparcv8, grlib, no grmon
 * microsd, fast ethernet
@@ -7,30 +7,30 @@
 * nvc vhdl and verilog mixed simulation 
 * qmtech wukong v3 $120 fpga board
 
-#### 1. Quick start
+## 1. Quick start
 The wukong board has the same ddr3 memory as digilent arty.
 That's why we modified the arty's folders in grlib.
 
-###### 1.1 Workspace
-######## grlib
+### 1.1 Workspace
+#### grlib
 ```
 tar -xf grlib-gpl-2026.3-b4301.tar.gz
 cp grlib/grlib-gpl-2026.3-b4301 . -r
 ```
-######## gcc
+#### gcc
 <!-- cat sparc-v8-linux6.13.tar.xz | split -b 40m - sparc-v8-linux6.13.tar.xz. -->
 ```
 cat sparc-v8-linux6.13.tar.xz.a* | tar -xJf -
 ```
 Add the full path to sparc-v8-linux6.13/bin to the PATH variable
-######## buildroot 
+#### buildroot 
 ```
 tar -xf gaisler-buildroot-2025.02-1.1.tar.bz2
 cp buildroot/gaisler-buildroot-2025.02-1.1 . -r
 ```
 
-###### 1.2. Build
-######## buildroot
+### 1.2. Build
+#### buildroot
 ```
 cd gaisler-buildroot-2025.02-1.1
 make -j5
@@ -41,7 +41,7 @@ cp ../buildroot/gaisler-buildroot-2025.02-1.1/output/build/linux-6.13.12/.config
 make -j5
 cd -
 ```
-######## grlib
+#### grlib
 Replace in bin/Makefile paths that start with '/home/laur/' with your paths
 or ignore if you do not want to use ghdl or xsim
 ```
@@ -49,7 +49,7 @@ cd grlib-gpl-2026.3-b4301/designs/
 ./run-sparc.sh
 ```
 
-###### 1.3 Simulate
+### 1.3 Simulate
 Install nvc simulator
 Every time you modify a vhd or verilog source
 ```
@@ -57,17 +57,17 @@ make nvc
 make nvc-run
 ```
 
-###### 1.4 Generate bit file
+### 1.4 Generate bit file
 ```
 make vivado
 ```
-######## write microsd (replace /dev/sdb with your microsd)
+#### write microsd (replace /dev/sdb with your microsd)
 ```
 dd if=sparc.bin of=/dev/sdb bs=512 seek=0 && sync
 ```
 
-#### 2. Compile gcc
-###### 2.1 Environment variables
+## 2. Compile gcc
+### 2.1 Environment variables
 Please replace /home/laur/rtos with your folder
 ```
 mkdir /home/laur/rtos/sparc-v8/sparc-v8-linux6.13
@@ -75,7 +75,7 @@ export PATH="$PATH:/home/laur/rtos/sparc-v8/sparc-v8-linux6.13/bin"
 export TOOLS=/home/laur/rtos/sparc-v8/sparc-v8-linux6.13
 ```
 
-###### 2.2 Build binutils
+### 2.2 Build binutils
 download from http://www.gnu.org/software/binutils
 ```
 mkdir bbinutils
@@ -85,7 +85,7 @@ make
 make install
 cd -
 ```
-###### 2.3 Build linux headers
+### 2.3 Build linux headers
 download from http://kernel.org
 ```
 cd linux-6.13.12
@@ -93,7 +93,7 @@ make mrproper
 make ARCH=sparc INSTALL_HDR_PATH=${TOOLS} headers_install
 cd -
 ```
-###### 2.4 gcc pass 1 - without libc
+### 2.4 gcc pass 1 - without libc
 download from http://gcc.gnu.org
 ```
 cd gcc-14.4.0/
@@ -105,7 +105,7 @@ make all-gcc all-target-libgcc
 make install-gcc install-target-libgcc
 ```
 
-###### 2.5 Configure and build uclibc
+### 2.5 Configure and build uclibc
 download from http://uclibc.org
 ```
 tar xjvf uClibc-1.0.58.tar.bz2
@@ -150,7 +150,7 @@ make
 make PREFIX=${TOOLS} install
 ```
 
-###### 2.6 gcc pass 2
+### 2.6 gcc pass 2
 ```
 mkdir ../sparc-v8-linux6.13/usr
 cp ../sparc-v8-linux6.13/include ../sparc-v8-linux6.13/usr -r
@@ -159,7 +159,7 @@ make -j4
 make install-strip
 ```
 
-###### 2.7 test
+### 2.7 test
 ```
 cd /tmp
 echo 'int main(){}' > t.c
@@ -170,7 +170,7 @@ readelf -l t | grep interpreter
 
 
 
-#### 3. Build mig file
+## 3. Build mig file
 We have already built the mig file; the step-by-step tutorial is in the migpng folder.
 We included mig.dcp in the build in order to save time,
 but if you want to rebuild it from scratch when building the bit file,
