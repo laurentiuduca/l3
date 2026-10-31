@@ -106,7 +106,7 @@ make install-gcc install-target-libgcc
 ```
 
 ### 2.5 Configure and build uclibc
-download from http://uclibc.org
+download from http://uclibc-ng.org
 ```
 tar xjvf uClibc-1.0.58.tar.bz2
 cd uClibc-1.0.58
