@@ -143,7 +143,7 @@ Installation options:
   DEVEL_PREFIX: /
   HARDWIRED_ABSPATH: no
 Development and debugging options
-  CROSS_COMPILER_PREFIX: sparc-leon3-linux-
+  CROSS_COMPILER_PREFIX: sparc-leon3-linux-uclibc-
 ```
 ```
 make
@@ -163,7 +163,7 @@ make install-strip
 ```
 cd /tmp
 echo 'int main(){}' > t.c
-sparc-leon3-linux-gcc t.c -o t
+sparc-leon3-linux-gcc-uclibc t.c -o t
 readelf -l t | grep interpreter
 ```
 [Requesting program interpreter: /lib/ld-uClibc.so.
