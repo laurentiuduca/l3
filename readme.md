@@ -86,7 +86,7 @@ make install
 cd -
 ```
 ###### 2.3 Build linux headers
-download from kernel.org
+download from http://kernel.org
 ```
 cd linux-6.13.12
 make mrproper
@@ -96,7 +96,7 @@ cd -
 ###### 2.4 gcc pass 1 - without libc
 download from gcc.gnu.org
 ```
-cd ../gcc-14.4.0/
+cd gcc-14.4.0/
 ./contrib/download_prerequisites
 mkdir -p ../bgcc
 cd ../bgcc
